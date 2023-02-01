@@ -1,5 +1,5 @@
 # telegrammBots
-https://github.com/AlexaTesla/telegrammBots/blob/main/CHemu-dolzhny-nauchitsya-Java-razrabotchiki-v-2021-godu.jpg
+![image alt](https://github.com/AlexaTesla/telegrammBots/blob/main/CHemu-dolzhny-nauchitsya-Java-razrabotchiki-v-2021-godu.jpg)
 Telegram bots for specific requests:
 - inquiry of the dollar exchange rate for any date
 - request NASA photos for any date
