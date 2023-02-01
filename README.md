@@ -1,5 +1,5 @@
 # telegrammBots
-![image alt]()
+![image alt](https://github.com/AlexaTesla/telegrammBots/blob/main/cooder.gif)
 
 Telegram bots for specific requests:
 - inquiry of the dollar exchange rate for any date
