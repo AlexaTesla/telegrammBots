@@ -6,7 +6,7 @@ Telegram bots for specific requests:
 - request NASA photos for any date
 - request for current news (Russia)
 
-__*Instruction:*__
+***Instruction:***
 
 1. *"Telegram"* - the name bot_answer
 
