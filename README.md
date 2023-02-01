@@ -23,3 +23,7 @@ In the reply message you will receive the current exchange rate for this date.
 Run the code in the console and then open a dialog with the bot without closing the console.
 Press start and send a message with the date in the format (yyyy-mm-dd).
 In the reply message you will receive a picture or a link to a video made on the specified date.
+
+4. "TGnews" - the name LeksaNews_bot
+
+Run the code in the console and then open a dialog with the bot without closing the console.
