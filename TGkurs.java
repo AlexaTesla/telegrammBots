@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class TGkurs {
     public static void main(String[] args) throws IOException {
-        TelegramBot bot = new TelegramBot("5831914935:AAH-wshbk9IXnKTGahRWHNLijeIU0AVjucY");
+        TelegramBot bot = new TelegramBot("5652981825:AAEmYbc80YU0OlWIdXwLmmj-8Hlc-s8P0Os");
         bot.setUpdatesListener(updates -> {
             updates.forEach(upd -> {
 
@@ -20,24 +20,19 @@ public class TGkurs {
                     System.out.println(upd);
                     long chatId = upd.message().chat().id();
                     String inMessage = upd.message().text();
+                    Document doc = Jsoup.connect("https://cbr.ru/scripts/XML_daily.asp?date_req=" + inMessage).get();
+                    System.out.println(doc.title());
+                    Elements valutes = doc.select("Valute");
+                    String result = "";
 
-                    String results = "";
-                    if (inMessage.equals("/start")) {
-                        results = "Привет, напиши дату через /...";
-
-                    } else {
-                        Document doc = Jsoup.connect("https://cbr.ru/scripts/XML_daily.asp?date_req=" + inMessage).get();
-                        System.out.println(doc.title());
-                        Elements valutes = doc.select("Valute");
-                        String result = null;
-                        for (Element valute : valutes) {
-                            if (valute.attr("ID").equals("R01235")) {
-                                result = valute.select("Value").text();
-                                System.out.println(result);
-                            }
+                    for (Element valute : valutes) {
+                        if (valute.attr("ID").equals("R01235")) {
+                            result = valute.select("Value").text();
+                            System.out.println(result);
                         }
                     }
-                    SendMessage request = new SendMessage(chatId, results);
+
+                    SendMessage request = new SendMessage(chatId, result);
                     bot.execute(request);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -45,6 +40,5 @@ public class TGkurs {
             });
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
         });
-
     }
 }
