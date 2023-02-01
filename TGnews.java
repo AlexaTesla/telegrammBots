@@ -1,11 +1,10 @@
-package TGbot;
-
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
 import java.io.IOException;
 
 public class TGnews {
@@ -19,21 +18,16 @@ public class TGnews {
                     long chatId = upd.message().chat().id();
                     String inMessage = upd.message().text();
 
-                    String result;
-                    if (inMessage.equals("/start")) {
-                        result = "Привет, напиши номер новости...";
+                    int number = Integer.parseInt(inMessage);
+                    Document doc = Jsoup.connect("https://lenta.ru/rss").get();
+                    int index = number - 1;
+                    Element news = doc.select("item").get(index);
+                    String category = news.select("category").text();
+                    String title = news.select("title").text();
+                    String link = news.select("link").text();
+                    String description = news.select("description").text();
+                    String result = category + "\n" + title + "\n" + description + "\n" + link;
 
-                    } else {
-                        int number = Integer.parseInt(inMessage);
-                        Document doc = Jsoup.connect("https://lenta.ru/rss").get();
-                        int index = number - 1;
-                        Element news = doc.select("item").get(index);
-                        String category = news.select("category").text();
-                        String title = news.select("title").text();
-                        String link = news.select("link").text();
-                        String description = news.select("description").text();
-                        result = category + "\n" + title + "\n" + description + "\n" + link;
-                    }
                     SendMessage request = new SendMessage(chatId, result);
                     bot.execute(request);
                 } catch (Exception exep) {
