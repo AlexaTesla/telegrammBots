@@ -27,3 +27,5 @@ In the reply message you will receive a picture or a link to a video made on the
 4. "TGnews" - the name LeksaNews_bot
 
 Run the code in the console and then open a dialog with the bot without closing the console.
+Press start and send any number.
+In the reply message you will receive the news corresponding to the specified number for today's date.
